@@ -54,6 +54,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    modernizr-rails (2.6.2)
     multi_json (1.6.1)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -110,6 +111,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.1.0)
   coffee-rails (~> 3.2.1)
   jquery-rails
+  modernizr-rails
   pg
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
