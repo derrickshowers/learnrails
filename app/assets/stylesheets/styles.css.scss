@@ -1,6 +1,12 @@
 /*$baseFontFamily: Oxygen;
 @Import url(http://fonts.googleapis.com/css?family=Oxygen);*/
 
+$navbarBackgroundHighlight: black;
+$navbarHighlight: black;
+$navbarText: white;
+$navbarLinkColor: lightGray;
+$navbarLinkColorHover: white;
+
 @import "bootstrap";
 
 body {
@@ -9,10 +15,28 @@ body {
 
 @import "bootstrap-responsive";
 
+/* Header Stuff */
+.navbar {
+	li {
+		line-height:25px;
+	}
+}
+
+/* Footer Stuff */
 .footer {
 	margin-top: 50px;
 	color: $grayLight;
 	a {
 		color: $gray;
+	}
+}
+
+/* Homepage */
+.hero-unit {
+	h1 {
+		margin-bottom: 25px;
+	}
+	.btn {
+		margin-top: 25px;
 	}
 }

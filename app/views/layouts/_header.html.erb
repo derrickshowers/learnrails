@@ -10,12 +10,11 @@
       </a>
  
       <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href="#">One Month Rails</a>
+      <%=link_to image_tag("logo25x25.png", :alt => "Logo") + " Did Not Know That", root_path ,class: "brand" %>
  
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse collapse">
         <ul class="nav">
-        	<li><%=link_to "Home", root_path %></li>
         	<li><%=link_to "About", about_path %></li>
         </ul>
         <ul class="nav pull-right">
