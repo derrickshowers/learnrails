@@ -6,6 +6,8 @@ $navbarHighlight: black;
 $navbarText: white;
 $navbarLinkColor: lightGray;
 $navbarLinkColorHover: white;
+$navbarHeight: 45px;
+
 
 @import "bootstrap";
 
@@ -16,14 +18,10 @@ body {
 @import "bootstrap-responsive";
 
 /* Header Stuff */
-.navbar {
-	li {
-		line-height:25px;
-	}
-}
+
 
 /* Footer Stuff */
-.footer {
+footer {
 	margin-top: 50px;
 	color: $grayLight;
 	a {
