@@ -1,15 +1,16 @@
 Omrails::Application.routes.draw do
 
-  resources :pins
-
-
-  get "pages/dashboard"
-
-  devise_for :users
-
+  authenticated :user do
+  	root :to => "dashboard#main"
+  end
   root :to => 'pages#home'
   get 'about' => 'pages#about'
-  get 'dashboard' => 'pages#dashboard'
+  get "dashboard/main"
+  get "pages/dashboard"
+
+  resources :pins
+
+  devise_for :users
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

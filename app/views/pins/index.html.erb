@@ -1,12 +1,10 @@
 <h1>Listing pins</h1>
 
-<table class="table table-striped">
+<table id="pins" class="table table-striped">
   <thead>
 	  <tr>
-	    <th>Description</th>
-	    <th></th>
-	    <th></th>
-	    <th></th>
+	    <th>The Did-Not-Know-Thats</th>
+	    <th>Edit</th>
 	  </tr>
   </thead>
 
@@ -17,4 +15,22 @@
 
 <br />
 
-<%= link_to 'New Pin', new_pin_path %>
+<% 
+	#TODO: Show this if JS is disabled
+	#link_to "Did Not Know...", new_pin_path, class:" btn btn-primary btn-large" 
+%>
+<a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Did Not Know...</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Did Not Know...</h3>
+  </div>
+  <div class="modal-body">
+    <%= render 'form' %>
+  </div>
+</div>
+
+
+

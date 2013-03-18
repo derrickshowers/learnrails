@@ -1,8 +1,10 @@
 <tr>
   <td><%= pin.description %></td>
-  <td><%= link_to 'Show', pin %></td>
+  <td class="options"><%= link_to raw("<i class='icon-search'></i>"), pin %>
   <% if current_user == pin.user %>
-	  <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-	  <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  <%= link_to raw("<i class='icon-pencil'></i>"), edit_pin_path(pin) %>
+	  <%= link_to raw("<i class='icon-trash'></i>"), pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% else %>
+		</td>
 	<% end %>
 </tr>

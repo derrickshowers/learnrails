@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   has_many :pins
+  
+  def fname
+    self.name.split(/\s+/, 1+1)[0...1].join(' ')
+  end
+  
 end
