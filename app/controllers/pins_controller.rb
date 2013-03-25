@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :updateLikes, :show]
   
   # GET /pins
   # GET /pins.json
@@ -61,6 +61,7 @@ class PinsController < ApplicationController
   # PUT /pins/1.json
   def update
     @pin = current_user.pins.find(params[:id])
+    @pin["likes"] = 0
 
     respond_to do |format|
       if @pin.update_attributes(params[:pin])
@@ -68,6 +69,24 @@ class PinsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
+        format.json { render json: @pin.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def updateLikes
+    @pin = Pin.find(params[:id])
+    
+    if params[:like]
+    	@pin["likes"] += 1
+    else
+    	@pin["likes"] -= 1
+    end
+
+    respond_to do |format|
+      if @pin.update_attributes(params[:pin])
+        format.json { head :no_content }
+      else
         format.json { render json: @pin.errors, status: :unprocessable_entity }
       end
     end

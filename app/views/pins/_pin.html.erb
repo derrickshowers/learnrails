@@ -1,8 +1,8 @@
 <tr>
   <td><%= pin.description %></td>
   <td class="options">
-	  <i id="like<%=pin.id %>" class='like icon-thumbs-up'></i>
-	  <i id="dislike<%=pin.id %>" class='dislike icon-thumbs-down'></i>
+  	<%= link_to raw('<i class="like icon-thumbs-up"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id, :like => true }, :method => :put, :remote => true %>
+  	<%= link_to raw('<i class="like icon-thumbs-down"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id }, :method => :put, :remote => true %>
 	  <%= link_to raw("<i class='icon-search'></i>"), pin %>
 	  <% if current_user == pin.user %>
 		  <%= link_to raw("<i class='icon-pencil'></i>"), edit_pin_path(pin) %>

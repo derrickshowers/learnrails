@@ -1,5 +1,5 @@
 class Pin < ActiveRecord::Base
-  attr_accessible :description, :image
+  attr_accessible :description, :image, :likes
   
   # Validation
   validates :description, presence: true

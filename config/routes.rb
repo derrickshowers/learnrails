@@ -1,12 +1,13 @@
 Omrails::Application.routes.draw do
 
-  authenticated :user do
-  	root :to => "dashboard#main"
-  end
+  # authenticated :user do
+  # 	root :to => "dashboard#main"
+  # end
   root :to => 'pages#home'
   get 'about' => 'pages#about'
-  get "dashboard/main"
-  get "pages/dashboard"
+  get 'dashboard/main'
+  get 'pins/updateLikes'
+  put 'pins/updateLikes'
 
   resources :pins
 
