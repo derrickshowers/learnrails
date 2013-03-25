@@ -44,6 +44,7 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = current_user.pins.new(params[:pin])
+    @pin["likes"] = 0
 
     respond_to do |format|
       if @pin.save

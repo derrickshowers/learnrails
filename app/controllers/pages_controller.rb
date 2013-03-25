@@ -1,12 +1,8 @@
 class PagesController < ApplicationController
   
   def home
-  end
-  
-  def about
-  end
-  
-  def dashboard
+  	@pins = Pin.find(:all, :order => 'id')
+  	@pinsLikes = Pin.find(:all, :order => 'id')
   end
   
 end
