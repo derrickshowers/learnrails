@@ -10,4 +10,6 @@ class Pin < ActiveRecord::Base
   # Associations
   has_attached_file :image
   belongs_to :user
+  has_many :likes
+  
 end

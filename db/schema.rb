@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130325051450) do
+ActiveRecord::Schema.define(:version => 20130326221922) do
+
+  create_table "likes", :force => true do |t|
+    t.integer  "userId"
+    t.integer  "pinId"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pins", :force => true do |t|
     t.string   "description"
