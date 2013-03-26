@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+
+$(document).ready(function() {
+
+	// JS For Like/Dislike AJAX
+	$(".likeDislike").click(function(e) {
+		$(".likeDislike").bind('ajax:success', function(data, status, xhr) {
+			$(this).addClass('iconSelected');
+			$(this).siblings('.likeDislike').removeClass('iconSelected');
+		});
+	});
+
+});

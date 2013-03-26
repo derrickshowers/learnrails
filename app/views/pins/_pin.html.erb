@@ -1,14 +1,20 @@
 <tr>
   <td><%= pin.description %></td>
   <td class="options">
-  	<%= link_to raw('<i class="like icon-thumbs-up"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id, :like => true }, :method => :put, :remote => true %>
-  	<%= link_to raw('<i class="like icon-thumbs-down"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id }, :method => :put, :remote => true %>
-	  <%= link_to raw("<i class='icon-search'></i>"), pin %>
-	  <% if current_user == pin.user %>
-		  <%= link_to raw("<i class='icon-pencil'></i>"), edit_pin_path(pin) %>
-		  <%= link_to raw("<i class='icon-trash'></i>"), pin, method: :delete, data: { confirm: 'Are you sure?' } %>
-		  </td>
-		<% else %>
-		  </td>
-		<% end %>
+  	<% if user_signed_in? && current_page?(root_path) %>
+	  	<%= link_to raw('<i class="icon-thumbs-up"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id, :like => true }, :method => :put, :remote => true, :class => 'pull-right likeDislike' %>
+	  	<%= link_to raw('<i class="icon-thumbs-down"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id }, :method => :put, :remote => true, :class => 'pull-right likeDislike' %>
+	  <% end %>
+	  <% if !current_page?(root_path) %>
+	  	<%= link_to raw("<i class='icon-search'></i>"), pin, :class => 'pull-right' %>
+			  <% if current_user == pin.user %>
+				  <%= link_to raw("<i class='icon-pencil'></i>"), edit_pin_path(pin), :class => 'pull-right' %>
+				  <%= link_to raw("<i class='icon-trash'></i>"), pin, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'pull-right' %>
+				  </td>
+				<% else %>
+				  </td>
+				<% end %>
+	  <% else %>
+	  	</td>
+	  <% end %>
 </tr>
