@@ -2,8 +2,8 @@
   <td><%= pin.description %></td>
   <td class="options">
   	<% if user_signed_in? && current_page?(root_path) %>
-	  	<%= link_to raw('<i class="icon-thumbs-up"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id, :like => true }, :method => :put, :remote => true, :class => 'pull-right likeDislike' %>
-	  	<%= link_to raw('<i class="icon-thumbs-down"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id }, :method => :put, :remote => true, :class => 'pull-right likeDislike' %>
+	  	<%= link_to raw('<i class="icon-thumbs-up"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id, :like => true }, :method => :put, :remote => true, :class =>  (@likedPins.where(:pin_id => pin.id).length > 0) ? "iconSelected likeDislike pull-right" : "likeDislike pull-right" %>
+	  	<%= link_to raw('<i class="icon-thumbs-down"></i>'), { :controller => 'pins', :action => 'updateLikes', :id => pin.id }, :method => :put, :remote => true, :class => (@likedPins.where(:pin_id => pin.id).length <= 0) ? "iconSelected likeDislike pull-right" : "likeDislike pull-right" %>
 	  <% end %>
 	  <% if !current_page?(root_path) %>
 	  	<%= link_to raw("<i class='icon-search'></i>"), pin, :class => 'pull-right' %>

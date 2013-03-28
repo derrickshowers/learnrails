@@ -75,14 +75,14 @@ class PinsController < ApplicationController
   end
   
   def updateLikes
-    @pin = current_user.pins.find(params[:id])
+    @pin = Pin.find(params[:id])
     
     if params[:like]
     	@pin["likes"] += 1
-    	Like.create(:userId => current_user.id,:pinId => params[:id])
+    	Like.create(:user_id => current_user.id,:pin_id => params[:id])
     else
     	@pin["likes"] -= 1
-    	destroyLike = Like.where(:userId => current_user.id, :pinId => params[:id])
+    	destroyLike = Like.where(:user_id => current_user.id, :pin_id => params[:id])
     	destroyLike.each { |o| o.destroy }
     end
 
