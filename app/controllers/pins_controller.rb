@@ -1,10 +1,10 @@
 class PinsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :updateLikes, :show]
+  before_filter :authenticate_user!, except: [:updateLikes, :show]
   
   # GET /pins
   # GET /pins.json
   def index
-    @pins = Pin.all
+    @pins = current_user.pins.all
     @pin = current_user.pins.new
 
     respond_to do |format|
@@ -73,27 +73,6 @@ class PinsController < ApplicationController
       end
     end
   end
-  
-  def updateLikes
-    @pin = Pin.find(params[:id])
-    
-    if params[:like]
-    	@pin["likes"] += 1
-    	Like.create(:user_id => current_user.id,:pin_id => params[:id])
-    else
-    	@pin["likes"] -= 1
-    	destroyLike = Like.where(:user_id => current_user.id, :pin_id => params[:id])
-    	destroyLike.each { |o| o.destroy }
-    end
-
-    respond_to do |format|
-      if @pin.update_attributes(params[:pin])
-        format.json { head :no_content }
-      else
-        format.json { render json: @pin.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /pins/1
   # DELETE /pins/1.json
@@ -106,4 +85,30 @@ class PinsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def updateLikes
+  	@pin = Pin.find(params[:id])
+  	
+  	if Like.where(:user_id => current_user.id,:pin_id => params[:id]).count > 0
+  		@like = Like.where(:user_id => current_user.id,:pin_id => params[:id])
+  		@like.update_all(:rating => (params[:like]) ? 1 : -1)
+  	else
+  		@like = Like.new
+  		@like.user_id = current_user.id
+  		@like.pin_id = params[:id]
+  		@like.rating = (params[:like]) ? 1 : -1
+  		@like.save
+  	end
+  	
+  	@pin["likeCount"] = Like.where(:pin_id => params[:id], :rating => 1).count
+  	
+    respond_to do |format|
+      if @pin.update_attributes(params[:pin])
+        format.json { head :no_content }
+      else
+        format.json { render json: @pin.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
 end

@@ -16,16 +16,42 @@
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
         	<li><%=link_to "About", about_path %></li>
+        	<li><%=link_to "Login", new_user_session_path, :class => "visible-phone" %></li>
         	<% if user_signed_in? %>
         		<li><%=link_to "Profile", edit_user_registration_path %></li>
+        		<li><%=link_to "My Did-Not-Know-Thats", pins_path %></li>
         		<li><%=link_to "Not " + current_user.fname + "? Logout", destroy_user_session_path, method: :delete %></li>
         	<% else %>
         		<li><%=link_to "Sign Up", new_user_registration_path %></li>
-        		<li><%=link_to "Login", new_user_session_path %></li>
         	<% end %>
         </ul>
       </div>
- 
     </div>
   </div>
 </div>
+
+<% 
+	# Special header for homepage - needs to be here to get out of the 
+	# container tags.
+%>
+<% if current_page?(root_path) %>
+	<div id="homepageHeader">
+		<div class="container">
+			<h2>Share Those "Did Not Know That" Moments</h2>
+			<div class="row">
+				<div class="span4 text-center">
+					<%= image_tag("home_step1.png") %>
+					<p>You have a sudden moment. You read something. Someone tells you something. Perhaps it comes to you in a dream. After you've realized what has just occurred - you might just happen to say... <strong>"Did Not Know That."</strong></p>
+				</div>
+				<div class="span4 text-center">
+					<%= image_tag("home_step2.png") %>
+					<p>So you <strong>log onto the interwebs</strong>, whether it be from your laptop, tablet or mobile device - and it feels so much better to publicly show-off this very important piece of information.</p>
+				</div>
+				<div class="span4 text-center">
+					<%= image_tag("home_step3.png") %>
+					<p>Sharing IS caring - why reap all the benefits of this sudden "Aha!" moments without allowing others the opportunity as well? Maybe it will be liked by millions - perhaps not. You'll never know until you <strong>share</strong>!</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>

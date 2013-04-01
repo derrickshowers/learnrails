@@ -1,8 +1,3 @@
-<div class="hero-unit">
-  <h1>Share Those "Aha!" Moments</h1>
-  <p>Maybe you read a Tweet that sparked it. Or possibly you were sitting there... thinking about what on earth happened last night... and then it hits you. Maybe even... an in-depth conversation is happening around you and all of a sudden...</p>
-  <p>Everyone has 'em - those moments in which that cartoon lightbulb appears. "Aha! That's what that means" or "Finally! I get it!" or maybe even "Really?! I had no idea..." Chances are, there's other people out there who probably don't realize it either - so come on, sharing is caring.</p>
-</div>
 <div class="row">
 	<div class="span4">
 		<h1>Latest</h1>
@@ -20,11 +15,15 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="span3 offset1">
+	<div class="span3 offset1 hidden-phone">
 		<% if user_signed_in? %>
-			<h2>Welcome Back</h2>
+			<h3>Member Links</h3>
+			<%= link_to "Post a new Did-Not-Know-That", new_pin_path %><br />
+			<%= link_to "See all my Did-Not-Know-Thats", pins_path %><br />
+			<%= link_to "Email a suggesiton", "mailto:derrick@derrickshowers.com" %><br />
+			<%= link_to "Logout", destroy_user_session_path %><br />
 		<% else %>
-			<h2>Sign in</h2>
+			<h3>Sign in</h3>
 	
 			<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			  
@@ -41,7 +40,6 @@
 			<% end %>
 			
 			<%= link_to "Don't Have An Account?", new_registration_path(resource_name) %><br />
-			<%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
 		<% end %>
 	</div>
 </div>
