@@ -100,7 +100,7 @@ class PinsController < ApplicationController
   		@like.save
   	end
   	
-  	@pin["likeCount"] = Like.where(:pin_id => params[:id], :rating => 1).count
+  	@pin["like_count"] = Like.where(:pin_id => params[:id], :rating => 1).count
   	
     respond_to do |format|
       if @pin.update_attributes(params[:pin])
