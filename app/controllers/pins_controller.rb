@@ -44,7 +44,7 @@ class PinsController < ApplicationController
   # POST /pins.json
   def create
     @pin = current_user.pins.new(params[:pin])
-    @pin["likeCount"] = 0
+    @pin["like_count"] = 0
 
     respond_to do |format|
       if @pin.save
@@ -61,7 +61,7 @@ class PinsController < ApplicationController
   # PUT /pins/1.json
   def update
     @pin = current_user.pins.find(params[:id])
-    @pin["likeCount"] = 0
+    @pin["like_count"] = 0
 
     respond_to do |format|
       if @pin.update_attributes(params[:pin])
