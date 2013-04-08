@@ -1,14 +1,12 @@
 Omrails::Application.routes.draw do
 
+  root :to => "pages#home"
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  # authenticated :user do
-  # 	root :to => "dashboard#main"
-  # end
-  root :to => 'pages#home'
+  
   get 'about' => 'pages#about'
-  get 'dashboard/main'
   get 'pins/updateLikes'
   put 'pins/updateLikes'
 

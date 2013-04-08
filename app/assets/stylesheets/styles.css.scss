@@ -30,9 +30,7 @@ footer {
 }
 
 /* General Stuff */
-.container {
-	position: relative;
-}
+
 
 /* Homepage */
 #homepageHeader {
@@ -77,6 +75,15 @@ footer {
 			}
 	}
 }
+#myPins {
+	position:relative;
+	#noPinsGetStarted {
+		top: -23px; left: 115px;
+		height: 94px; width: 400px;
+		position: absolute;
+		background: url("/assets/noPinsGetStarted.png") no-repeat;
+	}
+}
 #greatest {
 	.options {
 		display:none;
@@ -88,10 +95,4 @@ footer {
 	i {
 		background-image: url("/assets/glyphicons-halflings-hover.png");
 	}
-}
-#noPinsGetStarted {
-	top: 40px; left: 115px;
-	height: 94px; width: 400px;
-	position: absolute;
-	background: url("/assets/noPinsGetStarted.png") no-repeat;
 }

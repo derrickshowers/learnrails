@@ -1,6 +1,6 @@
 <h1>My Dashboard</h1>
 <div class="row">
-	<div class="span6">
+	<div id="myPins" class="span6">
 		<table id="pins" class="table table-striped">
 		  <thead>
 			  <tr>
@@ -8,15 +8,14 @@
 			    <th class="pull-right">Edit</th>
 			  </tr>
 		  </thead>
-		
 			<tbody>
 				<%= render @myPins %>
 			</tbody>
 		</table>
+		<a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Did Not Know...</a>
 		<% if @myPins.count <= 0 %>
 			<div id="noPinsGetStarted"></div>
 		<% end %>
-		<a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Did Not Know...</a>
 	</div>
 	<div class="span6">
 		<table id="pins" class="table table-striped">
@@ -26,7 +25,6 @@
 			    <th class="pull-right">Rate It</th>
 			  </tr>
 		  </thead>
-		
 			<tbody>
 				<%= render :partial => 'pinRating', :collection => @otherPins %>
 			</tbody>
