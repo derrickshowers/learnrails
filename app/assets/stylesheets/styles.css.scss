@@ -29,6 +29,11 @@ footer {
 	}
 }
 
+/* General Stuff */
+.container {
+	position: relative;
+}
+
 /* Homepage */
 #homepageHeader {
 	background-color: #EAF1F4;
@@ -44,6 +49,23 @@ footer {
 	.btn {
 		margin-top: 25px;
 	}
+	
+	/* Homepage Step Graphics */
+	.homeSteps {
+		height: 200px; width: 300px;
+		margin: 0 auto;
+		background: url("/assets/home_steps.png") no-repeat;
+	}
+	#step2 {
+		background-position: 0 -200px;
+	}
+	#step3 {
+		background-position: 0 -400px;
+	}
+}
+
+#signUpNotice {
+	margin-top: -30px;
 }
 
 /* Pins */
@@ -66,4 +88,10 @@ footer {
 	i {
 		background-image: url("/assets/glyphicons-halflings-hover.png");
 	}
+}
+#noPinsGetStarted {
+	top: 40px; left: 115px;
+	height: 94px; width: 400px;
+	position: absolute;
+	background: url("/assets/noPinsGetStarted.png") no-repeat;
 }

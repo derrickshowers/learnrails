@@ -1,25 +1,45 @@
-<h1>Listing pins</h1>
-
-<table id="pins" class="table table-striped">
-  <thead>
-	  <tr>
-	    <th>The Did-Not-Know-Thats</th>
-	    <th class="pull-right">Edit</th>
-	  </tr>
-  </thead>
-
-	<tbody>
-		<%= render @pins %>
-	</tbody>
-</table>
-
-<br />
+<h1>My Dashboard</h1>
+<div class="row">
+	<div class="span6">
+		<table id="pins" class="table table-striped">
+		  <thead>
+			  <tr>
+			    <th>My Did-Not-Know-Thats</th>
+			    <th class="pull-right">Edit</th>
+			  </tr>
+		  </thead>
+		
+			<tbody>
+				<%= render @myPins %>
+			</tbody>
+		</table>
+		<% if @myPins.count <= 0 %>
+			<div id="noPinsGetStarted"></div>
+		<% end %>
+		<a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Did Not Know...</a>
+	</div>
+	<div class="span6">
+		<table id="pins" class="table table-striped">
+		  <thead>
+			  <tr>
+			    <th>Others' Did-Not-Know-Thats</th>
+			    <th class="pull-right">Rate It</th>
+			  </tr>
+		  </thead>
+		
+			<tbody>
+				<%= render :partial => 'pinRating', :collection => @otherPins %>
+			</tbody>
+		</table>
+	</div>
+</div>
+	
+	<br />
 
 <% 
 	#TODO: Show this if JS is disabled
 	#link_to "Did Not Know...", new_pin_path, class:" btn btn-primary btn-large" 
 %>
-<a href="#myModal" role="button" class="btn btn-primary" data-toggle="modal">Did Not Know...</a>
  
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

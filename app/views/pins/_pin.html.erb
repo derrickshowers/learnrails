@@ -1,20 +1,12 @@
 <tr>
   <td><%= pin.description %></td>
   <td class="options">
-  	<% if user_signed_in? && current_page?(root_path) %>
-	  	<%= link_to (content_tag :i, "", class:"icon-thumbs-up"), { :controller => 'pins', :action => 'updateLikes', :id => pin.id, :like => true }, :method => :put, :remote => true, :class =>  (@likedPins.where(:pin_id => pin.id, :rating => 1).count > 0) ? "iconSelected likeDislike pull-right" : "likeDislike pull-right" %>
-	  	<%= link_to (content_tag :i, "", class:"icon-thumbs-down"), { :controller => 'pins', :action => 'updateLikes', :id => pin.id }, :method => :put, :remote => true, :class => (@likedPins.where(:pin_id => pin.id, :rating => -1).count > 0) ? "iconSelected likeDislike pull-right" : "likeDislike pull-right" %>
-	  <% end %>
-	  <% if !current_page?(root_path) %>
-	  	<%= link_to (content_tag :i, "", class:"icon-search"), pin, :class => 'pull-right' %>
-			  <% if current_user == pin.user %>
-				  <%= link_to (content_tag :i, "", class:"icon-pencil"), edit_pin_path(pin), :class => 'pull-right' %>
-				  <%= link_to (content_tag :i, "", class:"icon-trash"), pin, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'pull-right' %>
-				  </td>
-				<% else %>
-				  </td>
-				<% end %>
-	  <% else %>
-	  	</td>
-	  <% end %>
+  	<%= link_to (content_tag :i, "", class:"icon-search"), pin, :class => 'pull-right' %>
+	  <% if current_user == pin.user %>
+		  <%= link_to (content_tag :i, "", class:"icon-pencil"), edit_pin_path(pin), :class => 'pull-right' %>
+		  <%= link_to (content_tag :i, "", class:"icon-trash"), pin, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'pull-right' %>
+		  </td>
+		<% else %>
+		  </td>
+		<% end %>
 </tr>

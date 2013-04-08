@@ -1,9 +1,12 @@
+<% if !user_signed_in? %>
+	<p id="signUpNotice"><span class="label label-important">Please Note</span> You must be signed up to rank the posts below. Why not <%=link_to "Sign Up", new_user_registration_path %> now?</p>
+<% end %>
 <div class="row">
 	<div class="span4">
 		<h1>Latest</h1>
 		<table id="pins" class="table table-striped">			
 			<tbody>
-				<%= render @pins %>
+				<%= render :partial => "pins/pinRating", :collection => @pins %>	
 			</tbody>
 		</table>
 	</div>

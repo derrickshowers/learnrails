@@ -1,0 +1,9 @@
+<tr>
+  <td><%= pinRating.description %></td>
+  <td class="options">
+  	<% if user_signed_in? %>
+	  	<%= link_to (content_tag :i, "", class:"icon-thumbs-up"), { :controller => 'pins', :action => 'updateLikes', :id => pinRating.id, :like => true }, :method => :put, :remote => true, :class =>  (@likedPins.where(:pin_id => pinRating.id, :rating => 1).count > 0) ? "iconSelected likeDislike pull-right" : "likeDislike pull-right" %>
+	  	<%= link_to (content_tag :i, "", class:"icon-thumbs-down"), { :controller => 'pins', :action => 'updateLikes', :id => pinRating.id }, :method => :put, :remote => true, :class => (@likedPins.where(:pin_id => pinRating.id, :rating => -1).count > 0) ? "iconSelected likeDislike pull-right" : "likeDislike pull-right" %>
+	  <% end %>
+	 </td>
+</tr>

@@ -4,8 +4,10 @@ class PinsController < ApplicationController
   # GET /pins
   # GET /pins.json
   def index
-    @pins = current_user.pins.all
+    @myPins = current_user.pins.all
+    @otherPins = Pin.where(['user_id <> ?', current_user.id])
     @pin = current_user.pins.new
+    @likedPins = User.find(current_user.id).likes;
 
     respond_to do |format|
       format.html # index.html.erb
