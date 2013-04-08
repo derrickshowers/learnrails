@@ -1,5 +1,8 @@
 Omrails::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   # authenticated :user do
   # 	root :to => "dashboard#main"
   # end
@@ -12,6 +15,7 @@ Omrails::Application.routes.draw do
   resources :pins
 
   devise_for :users
+  ActiveAdmin.routes(self)
   resources :users
   
   # The priority is based upon order of creation:
