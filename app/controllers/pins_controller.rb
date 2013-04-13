@@ -4,7 +4,7 @@ class PinsController < ApplicationController
   # GET /pins
   # GET /pins.json
   def index
-    @myPins = current_user.pins.all
+    @myPins = current_user.pins.order('created_at DESC')
     @otherPins = Pin.where(['user_id <> ?', current_user.id])
     @pin = current_user.pins.new
     @likedPins = User.find(current_user.id).likes;
